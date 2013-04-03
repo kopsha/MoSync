@@ -147,6 +147,18 @@
 		Surface* imageResource = Base::gSyscall->resources.get_RT_IMAGE(imageHandle);
 		[_controller.tabBarItem setImage:[UIImage imageWithCGImage:imageResource->image]];
 	}
+	else if([key isEqualToString:@"setRetinaIcon"])
+	{  
+		int imageHandle = [value intValue];  if(imageHandle<=0) return MAW_RES_INVALID_PROPERTY_VALUE;
+		Surface* imageResource = Base::gSyscall->resources.get_RT_IMAGE(imageHandle);
+
+		[_controller.tabBarItem setImage:[
+					UIImage imageWithCGImage:imageResource->image
+							   	       scale:2.0
+								 orientation:UIImageOrientationUp
+							]
+			];
+	}	
 	else
     {
 		return [super setPropertyWithKey:key toValue:value];
