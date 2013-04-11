@@ -45,6 +45,7 @@ namespace MoSyncCamera
 
 	MoSyncCamController::~MoSyncCamController()
 	{
+		// FIXME: make both with a SAFE_DELETE
 		delete mCameraScreen;
 		if ( NULL != mImageViewerScreen )
 		{
@@ -61,6 +62,8 @@ namespace MoSyncCamera
 
 	void MoSyncCamController::displaySnapshot(const MAHandle& imageDataHandle)
 	{
+		// FIXME: I would move this construction into the constructor...
+		// this pattern is called lazy initialization and it is not really usefull here
 		if ( NULL == mImageViewerScreen )
 		{
 			mImageViewerScreen = new ImageViewerScreen(*this);

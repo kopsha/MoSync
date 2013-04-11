@@ -40,12 +40,12 @@ using namespace NativeUI;
 namespace MoSyncCamera
 {
 	ImageViewerScreen::ImageViewerScreen(ImageViewerScreenObserver& observer):
-			mObserver(observer),
+			mObserver(observer),					// Q: are you sure you want to make the observer mandatory
 			mMainLayout(NULL),
 			mImageView(NULL),
 			mDismissButton(NULL),
 			mSaveImageButton(NULL),
-			mImageHandle(maCreatePlaceholder())
+			mImageHandle(maCreatePlaceholder())		// FIXME: move this inside body
 	{
 		createUI();
 	}
@@ -56,12 +56,13 @@ namespace MoSyncCamera
 		mSaveImageButton->removeButtonListener(this);
 		if ( 0 < mImageHandle )
 		{
-			maDestroyPlaceholder(mImageHandle);
+			maDestroyPlaceholder(mImageHandle);	// TODO: I believe, that such a validation (above 0) should be done by the syscall
 		}
 	}
 
 	void ImageViewerScreen::createUI()
 	{
+		// TODO: sweet! remove my comment after you read it
 		setupMainLayout();
 		setupImageView();
 		setupButtons();
@@ -102,14 +103,14 @@ namespace MoSyncCamera
 
 	void ImageViewerScreen::arrangeWidgets()
 	{
-		/// Get screen dimensions.
-		MAExtent size = maGetScrSize();
-		/// Extract the screen width
+		/// FIXME: remove Get screen dimensions.
+		MAExtent size = maGetScrSize();	// TODO: can't we publish a new alias maGetScreenSize?
+		/// FIXME: remove  Extract the screen width
 		int screenWidth = EXTENT_X(size);
-		/// Extract the screen height
+		/// FIXME: remove  Extract the screen height
 		int screenHeight = EXTENT_Y(size);
 
-		// fill all the screen
+		//  FIXME: remove fill all the screen
 		mImageView->setPosition(0, 0);
 		mImageView->setWidth(screenWidth);
 		mImageView->setHeight(screenHeight);
@@ -146,6 +147,10 @@ namespace MoSyncCamera
 
 	void ImageViewerScreen::setImageWithData(const MAHandle& imageDataHandle)
 	{
+		// TODO: you re-create this placeholder too many times within your code,
+		// please identify the moments / events when you need to create one and
+		// the ones where you need to destroy it
+		// Q: Does this class work without an image handle?
 		if ( 0 < mImageHandle )
 		{
 			maDestroyPlaceholder(mImageHandle);
@@ -163,4 +168,4 @@ namespace MoSyncCamera
 		mImageView->setScaleMode(IMAGE_SCALE_PRESERVE_ASPECT);
 		mImageView->setVisible(true);
 	}
-} // CameraDemo
+} //  FIXME: remove CameraDemo

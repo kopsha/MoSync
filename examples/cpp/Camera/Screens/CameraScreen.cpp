@@ -76,6 +76,7 @@ namespace MoSyncCamera
 		mZoomOutButton->removeButtonListener(this);
 		if ( 0 < mLastSnapshotDataHandle )
 		{
+			// FIXME: try to guess :)
 			maDestroyPlaceholder(mLastSnapshotDataHandle);
 		}
 	}
@@ -121,7 +122,7 @@ namespace MoSyncCamera
 
 	void CameraScreen::resetCameraPropeties()
 	{
-		if ( mCamera )
+		if ( mCamera )			// TODO: checking memebers for null must be consistent across the class
 		{
 			mCamera->setFlashMode(FLASH_AUTO);
 			mCamera->setFocusMode(FOCUS_AUTO);
@@ -316,9 +317,12 @@ namespace MoSyncCamera
 	}
 
 
+	// FIXME: toggle suggests switching between two states, but the while and
+	// the % arraySize suggests otherwise, please rename the function or
+	// change the mechanism
 	void CameraScreen::toogleFlashMode()
 	{
-		// Toggle the flash modes
+		// FIXME remove Toggle the flash modes
 		uint nextFlashMode = mCurrentFlashMode + 1;
 		int arraySize = sizeof(kFlashModes)/sizeof(kFlashModes[0]);
 
@@ -337,6 +341,8 @@ namespace MoSyncCamera
 	}
 
 
+	// FIXME: this function relies on the assumption that there are two cameras
+	// at most
 	void CameraScreen::swapCameras()
 	{
 		// See which is the next camera index (in a circular manner).

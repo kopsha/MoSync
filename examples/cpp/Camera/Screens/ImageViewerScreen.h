@@ -39,6 +39,9 @@ namespace NativeUI
 
 namespace MoSyncCamera
 {
+	// TODO: this class name indicates that is an observer, but I'm having a
+	// hard time imagining what's the object of the observation, because I
+	// find 3 nouns: Image, Viewer, Screen // maybe 2 ImageViewer, Screen
 	class ImageViewerScreenObserver
 	{
 	public:
@@ -46,7 +49,8 @@ namespace MoSyncCamera
 		 * Notifies the observer to dismiss the screen
 		 * displaying the snapshot.
 		 */
-		virtual void dismissSnapshot() {};
+		// TODO continued: then I see what's the notification about
+		virtual void dismissSnapshot() {};	// Q: Should this be pure virtual?
 	};
 
 	class ImageViewerScreen:
@@ -59,6 +63,7 @@ namespace MoSyncCamera
 		 *
 		 * @param observer Observer for this screen.
 		 */
+		// FIXME: I would explain why this observer is required
 		ImageViewerScreen(ImageViewerScreenObserver& observer);
 
 		~ImageViewerScreen();
@@ -69,7 +74,7 @@ namespace MoSyncCamera
          * Platform: iOS, Android, Windows Phone.
          * @param button The button object that generated the event.
          */
-        void buttonClicked(NativeUI::Widget* button);
+        void buttonClicked(NativeUI::Widget* button);	// FIXME: make this virtual
 
         /**
 		 * Sets the displayed image using the diven data.
@@ -78,63 +83,63 @@ namespace MoSyncCamera
         void setImageWithData(const MAHandle& imageDataHandle);
 
 	private:
-		/**
+		/** FIXME: remove
 		 * Create screen's UI.
 		 */
         void createUI();
 
-        /**
+        /**  FIXME: remove
          * Configures the main layout.
          */
         void setupMainLayout();
 
-        /**
+        /**  FIXME: remove
          * Configures the image view and adds it
          * to the main layout.
          */
         void setupImageView();
 
-        /**
+        /**  FIXME: remove
          * Configures the image viewer buttons and
          * adds them to the main layout.
          */
         void setupButtons();
 
-        /**
+        /**  FIXME: remove
          * Arranges the widgets on the layout.
          */
         void arrangeWidgets();
 
 	private:
-		/**
+		/**  FIXME: remove
 		 * Observer for this screen.
 		 */
-        ImageViewerScreenObserver& mObserver;
+        ImageViewerScreenObserver& mObserver;	// FIXME: is mScreenObserver a better name for this?
 
-		/**
+		/**  FIXME: remove
 		 * Layout used to hold images.
 		 */
 		NativeUI::RelativeLayout* mMainLayout;
 
-		/**
+		/**  FIXME: remove
 		 * Camera.
 		 */
 		NativeUI::Image* mImageView;
 
-		/**
+		/**  FIXME: remove
 		 * Button that dismisses the screen.
 		 */
 		NativeUI::ImageButton* mDismissButton;
 
-		/**
+		/**  FIXME: remove
 		 * Button that saves the image viewed.
 		 */
 		NativeUI::ImageButton* mSaveImageButton;
 
-		/**
+		/**  FIXME: remove
 		 * Handle for the image viewed.
 		 */
 		MAHandle mImageHandle;
 	};
-} // CameraDemo
+} // CameraDemo	 FIXME: remove
 #endif /* SNAPSHOTSCREEN_H_ */

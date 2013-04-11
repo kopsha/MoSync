@@ -28,10 +28,12 @@
 
 namespace ScreenUtils
 {
-	void setupImageButton(NativeUI::ImageButton* imageButton,
+	// FIXME: proposed layout on multiple arguments
+	void setupImageButton(
+			NativeUI::ImageButton* imageButton,
 			NativeUI::ButtonListener* btnListener,
 			MAHandle normalImage,
-			MAHandle pressedImage)
+			MAHandle pressedImage )
 	{
 		if ( NULL == imageButton)
 		{
@@ -49,8 +51,11 @@ namespace ScreenUtils
 		imageButton->setHeight(EXTENT_Y(imageButtonSize));
 	}
 
-	void resizeWidget(NativeUI::Widget* widget,
-			const MAExtent& containerSize, float widthRatio)
+	// FIXME: check arguments layout
+	void resizeWidget(
+			NativeUI::Widget* widget,
+			const MAExtent& containerSize,
+			float widthRatio )
 	{
 		// set button size according to the container size.
 		int widthValue = (int)(EXTENT_X(containerSize) * widthRatio);

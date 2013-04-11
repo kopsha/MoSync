@@ -44,7 +44,7 @@ namespace MoSyncCamera
 		/**
 		 * Shows the first screen of the application.
 		 */
-		void displayMainScreen();
+		void displayMainScreen();	// FIXME: this is the only function which should be public
 
 		/**
 		 * Displays a snapshot on a separate screen.
@@ -84,6 +84,6 @@ namespace MoSyncCamera
 		 */
 		MAWScreenTransitionType mBackwardTransition;
 	};
-} // CameraDemo
+} // CameraDemo	// FIXME: remove this comment
 
 #endif /* MOSYNCCAM_CONTROLLER_H_ */
