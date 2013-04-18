@@ -79,5 +79,6 @@ extern "C" int MAMain()
 {
 	CustomPickerTest::NativeUIMoblet* moblet = new CustomPickerTest::NativeUIMoblet();
 	MAUtil::Moblet::run(moblet);
+	// FIXME: add delete
 	return 0;
 }

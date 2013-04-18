@@ -27,16 +27,22 @@ MA 02110-1301, USA.
 #include "CustomPickerListener.h"
 #include "Layout.h"
 
+/**
+ * FIXME: for the whole module
+ * add null check for all pointers comming from user
+ * remove duplicated comments from header file
+ */
+
 namespace NativeUI
 {
-	/**
+	/** FIXME remove this
 	 * Constructor.
 	 */
 	CustomPicker::CustomPicker(): Widget(MAW_CUSTOM_PICKER)
 	{
 	}
 
-	/**
+	/** FIXME remove this
 	 * Destructor.
 	 */
 	CustomPicker::~CustomPicker()
@@ -55,7 +61,9 @@ namespace NativeUI
 	 */
 	void CustomPicker::addChild(Layout* layout)
 	{
+		// FIMXE: add null check
 		Widget::addChild(layout);
+		// TODO: discuss null checking in Widget class with Florin
 	}
 
 	/**
@@ -73,6 +81,7 @@ namespace NativeUI
 	 */
 	int CustomPicker::insertChild(Layout* layout, const int index)
 	{
+		// FIMXE: validate index here or discuss update within Widget class
 		return Widget::insertChild(layout, index);
 	}
 
@@ -100,6 +109,9 @@ namespace NativeUI
 	 */
 	void CustomPicker::setRowHeight(const int height)
 	{
+		// TODO: discuss with the team the width and height restriction to at least 1 pixel
+		// NOT 0, which may cause a lots of size arithmetics to fail
+		// example: new[width*height]
 		setPropertyInt(MAW_CUSTOM_PICKER_ROW_HEIGHT, height);
 	}
 
@@ -206,6 +218,7 @@ namespace NativeUI
 	 */
 	void CustomPicker::addCustomPickerListener(CustomPickerListener* listener)
 	{
+		// FIXME: null check inside widget util
 		addListenerToVector(mCustomPickerListeners, listener);
 	}
 
@@ -215,6 +228,7 @@ namespace NativeUI
 	 */
 	void CustomPicker::removeCustomPickerListener(CustomPickerListener* listener)
 	{
+		// FIXME: null check
 		removeListenerFromVector(mCustomPickerListeners, listener);
 	}
 
@@ -239,6 +253,7 @@ namespace NativeUI
 	 */
 	void CustomPicker::notifyListenersItemChanged(const int selectedItemIndex)
 	{
+		// TODO: validation needed for returned index?
 		Widget* selectedItem = getChild(selectedItemIndex);
 		for (int i = 0; i < mCustomPickerListeners.size(); i++)
 		{

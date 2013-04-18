@@ -26,6 +26,12 @@
 #ifndef CPT_APP_CONTROLLER_H_
 #define CPT_APP_CONTROLLER_H_
 
+/**
+ * FIXME:
+ * avoid forward declaration if possible
+ * remove useless comments...
+ */
+
 // Forward declarations for NativeUI.
 namespace NativeUI
 {
@@ -65,12 +71,13 @@ namespace CustomPickerTest
 		 * Used to show the tested CustomPicker.
 		 * 1st tab screen.
 		 */
-		CustomPickerScreen* mCustomPickerScreen;
+		CustomPickerScreen* mCustomPickerScreen;	// FIXME: append Ref to the name of this members,
+		// since the ownership is passed to tab screen
 
 		/**
 		 * Used for testing CustomPicker properties.
 		 */
-		PropertiesScreen* mPropertiesScreen;
+		PropertiesScreen* mPropertiesScreen;		// FIXME: append Ref
 
 	};// end of AppController
 

@@ -32,6 +32,12 @@
 
 #include "ICustomPickerScreen.h"
 
+/***
+ * FIXME:
+ * try to remove forward decl
+ * remove redundant comments
+ */
+
 // Forward declarations for NativeUI
 namespace NativeUI
 {

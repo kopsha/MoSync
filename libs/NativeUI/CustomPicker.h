@@ -204,6 +204,7 @@ namespace NativeUI
 		 */
 		void notifyListenersItemChanged(const int selectedItemIndex);
 
+		// TODO: motivate why you hide these methods below instead of describing arguments
 		/**
 		 * Add a widget as a child of this widget.
 		 * Platform: Android, iOS.
