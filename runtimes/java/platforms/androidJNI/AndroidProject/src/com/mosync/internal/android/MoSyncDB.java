@@ -252,17 +252,11 @@ public class MoSyncDB
 
 		try
 		{
-			//Log.i("@@@@@", "execSQLHelper query: " + sql);
 			MoCursor cursor = database.execQuery(sql, params);
 			if (null != cursor)
 			{
 				++mCursorCounter;
 				addCursor(mCursorCounter, cursor);
-				return mCursorCounter;
-			}
-			else
-			{
-				return MA_DB_OK;
 			}
 		}
 		catch (SQLiteException ex)
@@ -273,6 +267,8 @@ public class MoSyncDB
 			logStackTrace(ex);
 			return MA_DB_ERROR;
 		}
+
+		return MA_DB_OK;
 	}
 
 	/**
